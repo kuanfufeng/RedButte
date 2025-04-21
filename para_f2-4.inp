@@ -1,0 +1,65 @@
+#  ---------------------------------------------------------------------------
+#  Parameter setting file of proccesing the NOISE_COR dv/v calculation
+#
+#  The package NOISE_COR is developed by 
+#  * Hsin-Hua Huang 	(Institute of Earth Sciences, Academia Sinica)
+#  * Kuan-Fu Feng 	(Department of Geosciences, National Taiwan University)
+#  ----------------------------------------------------------------------------
+#  code_dir:	the folder you do the process 
+#  case_dir:	the folder to be processed
+#  -----------------------------
+CODE_DIR = /uufs/chpc.utah.edu/common/home/u6041347/fling5/NOISE_dv
+CASE_DIR = SL-redbutte
+#  ---------------------------------------------------------------------------
+#  Compute dv/v underneath an band-width frequency range
+#
+#  data_dir:	the folder to be processed
+#  dv_coh:	the selected CCF folder for computing dv/v
+#  dv_flst:	station list file
+#  dv_flev:	event list file
+#  dv_tlst:	coda time table
+#  dv_t1:	coda beginning time for those pairs time table dosen't define
+#  dv_t2:	coda ending time for those pairs time table dosen't define
+#  f1: 		lower frequency boundary
+#  f2: 		coner frequency of lower boundary
+#  f3: 		coner frequency of higher boundary
+#  f4: 		higher frequency bandary
+#  dv_fixc:	the suffix of the current noise correlation function (NCF) in folder COH
+#  index:	[(-1) using the previous day to be the reference,(0) given reference in folder RCF]
+#  ---------------------------------------------------------------------------
+DV_DIR	= SL-redbutte
+DV_COH	= COR_sn5_20Hz_F2-4 #_swap5 #_100Hz_F2-4
+DV_FLST	= stalst.redb
+DV_FLEV	= evtlst.redb  #.rapid 
+DV_TLST	= SC_f2-4_test
+DV_T1	= 1.0
+DV_T2	= 9.0
+DV_F1   = 1 
+DV_F2   = 2  
+DV_F3   = 4  
+DV_F4   = 5  
+DV_FIXC = ave12-0_s
+INDEX	= 0
+# ---------------------------------------------------------------
+# FOR moving window cross spectrum method (MWCS, )
+# ---------------------------------------------------------------
+DV_CSTW	= 2
+DV_CSDT	= 0.2
+# ---------------------------------------------------------------
+# For stretching technique (ST, Sens-Schonfelder and Wegler 2006)
+#
+# dv_strng: Stretched range value (absolute value)
+# dv_stint: Stretched interval (absolute value)
+# ---------------------------------------------------------------
+DV_STRNG = 0.04
+DV_STINT = 0.00002
+# ---------------------------------------------------------------
+# For moving window cross correlation (MWCC, Snieder et al. 2002)
+# 
+# dv_cctw:	window length of the moving window (in sec)
+# dv_ccdt:	moving interval of each step (in sec)
+# dv_tlag:	cross-correlating lagtime of each window (in sec)
+# ---------------------------------------------------------------
+DV_CCTW  = 1
+DV_CCDT  = 0.1
+DV_TLAG  = 1

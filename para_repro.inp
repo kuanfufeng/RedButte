@@ -1,0 +1,68 @@
+#  ---------------------------------------------------------------------------
+#  Parameter setting file of proccesing the NOISE_COR dv/v calculation
+#
+#  The package NOISE_COR is developed by 
+#  * Hsin-Hua Huang 	(Institute of Earth Sciences, Academia Sinica)
+#  * Kuan-Fu Feng 	(Department of Geosciences, National Taiwan University)
+#  ----------------------------------------------------------------------------
+#  code_dir:	the folder you do the process 
+#  case_dir:	the folder to be processed
+#  -----------------------------
+CODE_DIR = /uufs/chpc.utah.edu/common/home/u6041347/fling5/NOISE_dv
+CASE_DIR = SL-redbutte
+#  ---------------------------------------------------------------------------
+#  Calculate daliy cross-correlation functions (CCFs) by Welch's method (Seats et al. 2012)
+#
+#  ccoh_dir:	the output CCF folder
+#  coh_slst:	station list for processing cross-correlation calculation
+#  coh_flst:	event list for processing cross-correlation calculation
+#  lag_time:	lagtime of CCFs (sec)
+#  ctw:		window length (sec)
+#  cdt:		moving interval (sec)
+#  comp1:	component of the first waveform [(0) Z, (1) N, (2) E]
+#  comp2:	component of the second waveform [(0) Z, (1) N, (2) E] 
+#  coh_f1:	the lower frequency boundary
+#  coh_f2:	the coner frequency of lower boundary
+#  coh_f3:	the coner frequency of higher boundary
+#  coh_f4:	the higher frequency bandary
+#  icor:	[(0) only compute ACFs, (1) only compute CCFs, else for both ACFs and CCFs]	
+#  ---------------------------------------------------------------------------
+CCOH_DIR = COR_sn5_20Hz_F2-4_swap1 #ad3 #bitwt
+COH_SLST = stalst.redb
+COH_FLST = evtlst.redb_swap1
+LAG_TIME = 100  # 150 sec 
+COH_CTW  = 300  #1800 #300  #  5 * 60 sec 
+COH_CDT  = 150  #900  #150  # tw * 0.5 (0.5 overlap == 0.5 shift)
+COMP1    = 0
+COMP2    = 0
+COH_F1	 = 1  #0.08  #0.01
+COH_F2	 = 2  #0.1  #0.02
+COH_F3	 = 4  #180 #46   #0.9  #8
+COH_F4	 = 5  #200 #50   #2  #10
+ICOR	 = 0
+#  ---------------------------------------------------------------------------
+#  Stack noise correlation functions (NCF)
+#  
+#  scoh_dir:	the selected CCF folder for stacking
+#  sslst:	station list file
+#  sflev:	event list file
+#  npre:	stack number prior the current day
+#  npost:	stack number after the current day 
+#  suffix:	the suffix of the current NCF
+#  ---------------------------------------------------------------------------
+SCOH_DIR  = COR_sn5_20Hz_F4-8  #_100Hz
+SSLST     = stalst.redb
+SFLEV     = evtlst.redb
+NPRE      = 12  #0  #12
+NPOST     = 0  #12 #0
+SUFFIX    = ave12-0 #6-6 #3-3
+#  ---------------------------------------------------------------------------
+#  Stacking Length tests
+#  ---------------------------------------------------------------------------
+VPH	= 0.8 #1.5
+NSTACK	= 40
+TLEN	= 10
+DV_F1   = 1 #0.35 
+DV_F2   = 2 #0.4  
+DV_F3   = 4 #0.8  
+DV_F4   = 5 #0.85 
